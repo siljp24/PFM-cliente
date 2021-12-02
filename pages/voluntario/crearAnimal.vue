@@ -1,6 +1,10 @@
 <template>
     <div class="voluntario-crear-animal">
-        <CrearAnimal />
+        <v-row>
+            <v-col md="6" offset-md="3">
+                <CrearAnimal />
+            </v-col>
+        </v-row>
     </div>
 </template>
 

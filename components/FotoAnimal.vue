@@ -1,9 +1,6 @@
 <template>
     <div class="foto-animal izquierda">
-        <img class="foto-animal"
-        :src="animal.foto"
-        alt="vaca" height="150"
-        >
+        <img class="foto-animal" :src="animal.foto" alt="vaca" height="150" >
         <h3>{{animal.nombre}}</h3>
     </div>
 </template>

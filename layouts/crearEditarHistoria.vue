@@ -1,7 +1,7 @@
 <template>
-    <div class="layout-main-voluntarios">
+    <div class="layout-crear-editar-historia">
         <v-app>
-            <AppBar />
+            <AppBar2 />
             <v-main>
                 <v-container>
                     <Nuxt />

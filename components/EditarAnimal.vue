@@ -32,7 +32,7 @@
                     </v-dialog>
                 </v-col>
                 <v-col cols="6">
-                    <v-btn disabled elevation="2" block> EDITAR</v-btn>
+                    <v-btn disabled elevation="2" block v-on:click="irSuceso"> EDITAR</v-btn>
                 </v-col>
             </v-row>
         </v-form>
@@ -52,6 +52,11 @@ export default {
                 'end',
             ],
             dialog: false,
+        }
+    },
+    methods:{
+        irSuceso(){
+            //this.$router.push("/voluntario/idHistoria/");
         }
     }
 }

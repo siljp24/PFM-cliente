@@ -1,8 +1,8 @@
 <template>
-    <div class="voluntario-anadir-historia">
+    <div class="voluntario-idHistoria-editar">
         <v-row>
             <v-col cols="2">
-                <v-btn to="/voluntario/idAnimal" block color="deep-orange lighten-3">VOLVER</v-btn>
+                <v-btn v-on:click="diario" block color="deep-orange lighten-3">DIARIO</v-btn>
             </v-col>
             <v-col cols="10"></v-col>
         </v-row>
@@ -14,6 +14,11 @@
 
 <script>
 export default {
-    layout: 'crearEditarHistoria',
+    layout:'crearEditarHistoria',
+    methods:{
+        diario(){
+            this.$router.push('/voluntario/idAnimal');
+        }
+    }
 }
 </script>

@@ -10,9 +10,7 @@
                         </v-col>
                     </v-row>
                     <v-row>
-                        <v-col cols="6" offset-md="3">
-                            <Nuxt />
-                        </v-col>
+                        <Nuxt />
                     </v-row>
                     
                 </v-container>

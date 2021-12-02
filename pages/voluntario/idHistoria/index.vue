@@ -1,5 +1,5 @@
 <template>
-    <div class="voluntario-idHistoria-">
+    <div class="voluntario-idHistoria">
         <Historia />
     </div>
 </template>

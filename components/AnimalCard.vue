@@ -1,7 +1,7 @@
 <template>
   <div class="animal-card">
       <v-card class="ma-6" max-width="344">
-        <v-img :src="fotoAnimal" height="200px"></v-img>
+        <v-img :src="fotoAnimal" height="200px" v-on:click="irDiarios"></v-img>
         <v-card-title>{{ nombre }}</v-card-title>
         <v-card-subtitle>{{ especie }}, {{ edad }}</v-card-subtitle>
         <v-card-actions>
@@ -32,6 +32,11 @@ export default {
             show: false,
             descripcion:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae libero efficitur, ullamcorper tellus ut, feugiat arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus accumsan pellentesque ante, et ullamcorper arcu. Proin nibh sapien, hendrerit sit amet ex a, posuere viverra elit. Mauris varius faucibus diam, id vestibulum velit imperdiet quis. Pellentesque habitant morbi.',
         }
+    },
+    methods:{
+      irDiarios(){
+        this.$router.push("/voluntario/idAnimal/");
+      }
     }
 }
 </script>

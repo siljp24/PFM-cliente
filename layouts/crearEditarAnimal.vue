@@ -4,11 +4,7 @@
             <AppBar2 />
             <v-main>
                 <v-container>
-                    <v-row>
-                        <v-col md="6" offset-md="3">
-                            <Nuxt />
-                        </v-col>
-                    </v-row>
+                    <Nuxt />
                 </v-container>
             </v-main>
         </v-app>
