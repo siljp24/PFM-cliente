@@ -1,6 +1,6 @@
 <template>
     <div class="sign-up-voluntario">
-         <v-form ref="form" v-model="valid" >
+         <v-form ref="form" v-model="valid" lazy-validation>
                 <v-card>
                     <v-card-title class="subtitulo justify-center">Registrarme</v-card-title>
                     <v-card-text>
@@ -9,7 +9,7 @@
                         <v-text-field v-model="password" required placeholder="Contraseña (más de 5 caracteres)" type="password"></v-text-field>
                         <v-text-field v-model="password2" required placeholder="Repetir contraseña" type="password"></v-text-field>
                         <v-checkbox v-model="condiciones" label="Acepto las condiciones" required :rules="[v => !!v ||'Debes aceptar condiciones para continuar']"></v-checkbox>
-                        <v-btn block v-on:click="onSubmit">Enviar</v-btn>
+                        <v-btn block @click="validate">Enviar</v-btn>
                     </v-card-text>
                 </v-card>    
         </v-form>  
@@ -29,11 +29,13 @@ export default {
         }
     },
     methods:{
-        // validate(){
-        //    this.$refs.form.validate()
-        // },
+        validate(){
+           this.$refs.form.validate();
+           if(this.condiciones == true){
+                this.onSubmit();
+           }
+        },
         async onSubmit(){ 
-            this.$refs.form.validate()
              if(this.password !== this.password2 ){
                 alert("Las contraseñas son diferentes");
                 return;
@@ -63,7 +65,6 @@ export default {
                     body,
                 });
                 const data = await res.json();
-                console.log(data)
                 if(data.error){
                     alert(data.error);
                     return;

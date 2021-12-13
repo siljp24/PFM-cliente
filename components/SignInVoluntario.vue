@@ -7,8 +7,8 @@
                 </v-card-title>
                 <v-card-text>
                     <v-text-field v-model="email" required placeholder="Email" type="email"></v-text-field>
-                    <v-text-field v-model="contraseña" required placeholder="Contraseña" type="password"></v-text-field>
-                    <v-btn block class="brown lighten-4" to="/voluntario/main"> Entrar</v-btn>
+                    <v-text-field v-model="password" required placeholder="Contraseña" type="password"></v-text-field>
+                    <v-btn block class="brown lighten-4" v-on:click="onSubmit"> Entrar</v-btn>
                 </v-card-text>
             </v-card>
         </v-form>
@@ -21,7 +21,35 @@ export default {
     data(){
         return{
             email:'',
-            contraseña:'',
+            password:'',
+        }
+    },
+    methods:{
+        async onSubmit(){
+            try{
+                const body = JSON.stringify({
+                    email: this.email,
+                    clave: this.password,
+                });
+                const res = await fetch('http://localhost:4500/api/voluntario/identificarVoluntario',{
+                    method:'post',
+                    headers:{
+                        'Content-Type': 'application/json',
+                    },
+                    body,
+                });
+                const data = await res.json();
+                console.log({data})
+                if(data.error){
+                    alert(data.error);
+                    return;
+                }else{
+                    window.localStorage.setItem('token', data.token);
+                    this.$router.push('/voluntario/main');
+                }
+            }catch(err){
+                console.log(err);
+            }
         }
     }
 }
