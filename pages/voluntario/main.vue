@@ -3,13 +3,13 @@
         <v-row>
             <v-col cols="12">
                 <v-flex text-right>
-                    <v-btn color="green lighten-2" to="/voluntario/crearAnimal">NUEVO ANIMAL</v-btn>
+                    <v-btn color="green lighten-2" v-on:click="toCreateAniaml">NUEVO ANIMAL</v-btn>
                 </v-flex>
             </v-col>
         </v-row>
         <v-row>
             <div v-for="(animal,index) in animales" :key="index">
-            <AnimalCard />
+            <AnimalCard :animal="animal"/>
         </div>
         </v-row>
     </div>
@@ -18,17 +18,41 @@
 <script>
 export default {
     layout:'mainVoluntarios',
-    data(){
-        return{
-            animales:{
-                animal1:{},
-                animal2:{},
-                animal3:{},
-                animal4:{},
-                animal5:{},
-                animal6:{},
+     data(){
+    return{
+      animales:[],
+    }
+  },
+  async beforeMount(){
+    console.log("beforemount")
+    await this.loadAnimals();
+  },
+  methods:{
+    async loadAnimals(){
+      try{
+        const res = await fetch('http://localhost:4500/api/animal/listaAnimales',
+        {
+            headers: {
+              'Content-Type': 'application/json',
             }
         }
+        );
+        const data = await res.json();
+        if(data.error){
+          alert(data.error);
+        }else{
+        const animales = data.animales;
+        for(let i = 0; i < animales.length; i++){
+          this.animales.push(animales[i]);
+        }
+        };
+      }catch(err){
+        console.log(err);
+      }
+    },
+    toCreateAniaml(){
+        this.$router.push('/voluntario/crearAnimal');
     }
+  }
 }
 </script>

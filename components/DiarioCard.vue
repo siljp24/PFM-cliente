@@ -1,7 +1,7 @@
 <template>
     <div class="diario-animal">
-        <v-card elevation="12" class="ma-5" max-width="350">
-           <v-img class="white--text align-end" height="200px" :src="diario.foto" v-on:click="leerHistoria"></v-img> 
+        <v-card elevation="12" class="ma-5" min-width="344" max-width="344">
+           <v-img class="white--text align-end" height="200px" :src="diario.foto" v-on:click="leerHistoria(diario._id)"></v-img> 
            <v-card-subtitle class="pb-0 text-center">{{ diario.fecha}}</v-card-subtitle>
            <v-card-actions>
                 <v-dialog v-model="dialog" width="500">
@@ -30,18 +30,20 @@
 
 <script>
 export default {
+    props:{
+        diario:{
+            type:Object,
+            required:true,
+        }
+    },
     data(){
         return{
-            diario:{
-                foto:'https://upload.wikimedia.org/wikipedia/commons/7/76/Atr3e.jpg',
-                fecha:'YY/YY/YYYY',
-            },
             dialog: false,
         }
     },
     methods:{
-        leerHistoria(){
-            this.$router.push('/voluntario/idHistoria');
+        leerHistoria(idHistoria){
+            this.$router.push(`/voluntario/idHistoria/${idHistoria}`);
         },
         irAnadirHistoria(){
             this.$router.push("/voluntario/idHistoria/editar");

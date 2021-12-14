@@ -16,7 +16,6 @@ export default {
     }
   },
   async beforeMount(){
-    console.log("beforemount")
     await this.loadAnimals();
   },
   methods:{
@@ -29,14 +28,11 @@ export default {
             }
         }
         );
-        console.log(res)
         const data = await res.json();
-        console.log(data)
         if(data.error){
           alert(data.error);
         }else{
         const animales = data.animales;
-        console.log(animales)
         for(let i = 0; i < animales.length; i++){
           this.animales.push(animales[i]);
         }
