@@ -4,7 +4,7 @@
             <v-card>
                 <v-card-title class="justify-center">EDITAR ANIMAL</v-card-title>
                 <v-card-text>
-                    <v-file-input v-model="foto" placeholder="Foto" required></v-file-input>
+                    <v-file-input v-model="perfilAnimal" placeholder="Foto" required></v-file-input>
                     <v-text-field v-model="nombre" placeholder="Nombre" required></v-text-field>
                     <v-text-field v-model="edad" placeholder="Edad" required></v-text-field>
                     <v-textarea v-model="descripcion" placeholder="Descripcion" required></v-textarea>
@@ -32,7 +32,7 @@
                     </v-dialog>
                 </v-col>
                 <v-col cols="6">
-                    <v-btn disabled elevation="2" block v-on:click="irSuceso"> EDITAR</v-btn>
+                    <v-btn elevation="2" block v-on:click="edit"> EDITAR</v-btn>
                 </v-col>
             </v-row>
         </v-form>
@@ -42,7 +42,7 @@
 export default {
     data(){
         return{
-            foto: undefined,
+            perfilAnimal: '',
             nombre: '',
             edad: '',
             descripcion:'',
@@ -55,8 +55,16 @@ export default {
         }
     },
     methods:{
-        irSuceso(){
-            //this.$router.push("/voluntario/idHistoria/");
+        edit(){
+            if(this.nombre.length === 0 ||this.edad.length === 0 || this.descripcion.length === 0 || this.especie.length === 0 || this.perfilAnimal.length === 0){
+                alert("Es necesario rellenar todos los campos");
+                return;
+            };
+            try{
+
+            }catch(err){
+
+            }
         }
     }
 }

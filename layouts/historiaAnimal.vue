@@ -4,16 +4,7 @@
             <AppBar2 />
             <v-main>
                 <v-container>
-                    <v-row class="mt-10">
-                        <v-col cols="2">
-                            <v-btn v-on:click="diario" block color="deep-orange lighten-3">DIARIO</v-btn>
-                        </v-col>
-                    </v-row>
-                    <v-row class="mt-10">
-                        <v-col class="mt-10">
-                            <Nuxt />
-                        </v-col>
-                    </v-row>
+                    <Nuxt />
                 </v-container>
             </v-main>
         </v-app>

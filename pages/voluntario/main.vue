@@ -24,7 +24,6 @@ export default {
     }
   },
   async beforeMount(){
-    console.log("beforemount")
     await this.loadAnimals();
   },
   methods:{

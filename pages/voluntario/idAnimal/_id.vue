@@ -3,7 +3,7 @@
         <v-row>
            <v-col cols="6">
                 <v-flex text-left>
-                    <v-btn color="orange lighten-2" to="/voluntario/editarAnimal">EDITAR ANIMAL</v-btn>
+                    <v-btn color="orange lighten-2" v-on:click="toEditAnimal">EDITAR ANIMAL</v-btn>
                 </v-flex>
             </v-col>
             <v-col cols="6">
@@ -27,6 +27,7 @@ export default {
     data(){
         return{
             diarios:[],
+            idAnimal:this.$route.params.id,
         }
     },
     async beforeMount(){
@@ -35,8 +36,7 @@ export default {
     methods:{
         async loadDiaries(){
              try{
-                const idAnimal = this.$route.params.id;
-                const res = await fetch(`http://localhost:4500/api/diario/diariosAnimal/${idAnimal}`,
+                const res = await fetch(`http://localhost:4500/api/diario/diariosAnimal/${this.idAnimal}`,
                 {
                     headers: {
                     'Content-Type': 'application/json',
@@ -55,6 +55,9 @@ export default {
             }catch(err){
             console.log(err);
         }
+        },
+        toEditAnimal(){
+            this.$router.push(`/voluntario/idAnimal/editarAnimal/${this.idAnimal}`);
         }
     }
 }

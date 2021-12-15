@@ -29,7 +29,6 @@ export default {
     },
     methods:{
         async onSubmit(){
-            console.log('clickkkkkkk')
             if(this.nombre.length === 0 ||this.edad.length === 0 || this.descripcion.length === 0 || this.especie.length === 0 || this.perfilAnimal.length === 0){
                 alert("Es necesario rellenar todos los campos");
                 return;
