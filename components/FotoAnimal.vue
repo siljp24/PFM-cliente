@@ -1,21 +1,23 @@
 <template>
-    <div class="foto-animal izquierda">
-        <img class="foto-animal" :src="animal.foto" alt="vaca" height="150" >
+    <div class="fotoDelAnimal ">
+        <v-row class="d-flex justify-center my-5">
+            <v-img class="foto-animal" :src="animal.foto" max-height="150px" min-height="150px" min-width="150px" max-width="150px"></v-img>
+        </v-row>
+        <v-row class="d-flex justify-center my-5">
         <h3>{{animal.nombre}}</h3>
+
+        </v-row>
     </div>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-            animal:{
-                foto:'https://storage.contextoganadero.com/s3fs-public/styles/noticias_one/public/ganaderia/field_image/2019-07/datos_curiosos.jpg?itok=K3YrNhVX',
-                nombre:'Paca',
-            }
-            
+    props:{
+        animal:{
+            type:Object,
+            required:true,
         }
-    }
+    },
 }
 </script>
 
@@ -23,6 +25,8 @@ export default {
 .foto-animal{
     border-radius: 50%;
     text-align: center;
+    
 }
+
 
 </style>

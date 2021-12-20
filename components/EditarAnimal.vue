@@ -52,18 +52,39 @@ export default {
                 'end',
             ],
             dialog: false,
+            idAnimal:this.$route.params.id,
         }
     },
     methods:{
-        edit(){
+        async edit(){
             if(this.nombre.length === 0 ||this.edad.length === 0 || this.descripcion.length === 0 || this.especie.length === 0 || this.perfilAnimal.length === 0){
                 alert("Es necesario rellenar todos los campos");
                 return;
             };
             try{
-
+                const formData = new FormData();
+                formData.enctype = 'multipart/form-data';
+                formData.append('perfilAnimal', this.perfilAnimal);
+                formData.append('nombre', this.nombre);
+                formData.append('especie', this.especie);
+                formData.append('descripcion', this.descripcion);
+                formData.append('edad', this.edad);
+                const token = localStorage.getItem('token');
+                const res = await fetch(`http://localhost:4500/api/animal/editarAnimal/${this.idAnimal}`,{
+                    method:'put',
+                    headers:{
+                        token:token,
+                    },
+                    body: formData,
+                });
+                const data = await res.json();
+                if(data.error){
+                    alert(data.error);
+                    return;
+                };
+                this.$router.push(`/voluntario/idAnimal/${this.idAnimal}`);
             }catch(err){
-
+                console.log(err);
             }
         }
     }
