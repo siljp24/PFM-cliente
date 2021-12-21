@@ -7,7 +7,7 @@
             <v-col cols="10"></v-col>
         </v-row>
         <v-row>
-            <v-col md="6" offset-md="3"><AnadirHistoria /></v-col>
+            <v-col md="6" offset-md="3"><EditarHistoria /></v-col>
         </v-row>
     </div>
 </template>
@@ -17,7 +17,10 @@ export default {
     layout:'crearEditarHistoria',
     methods:{
         diario(){
-            this.$router.push('/voluntario/idAnimal');
+            const idAnimal = localStorage.getItem('idAnimal');
+            this.$router.push(`/voluntario/idAnimal/${idAnimal}`);
+            localStorage.removeItem('idAnimal');
+            localStorage.removeItem('idDiario');
         }
     }
 }

@@ -11,12 +11,3 @@
     </div>
 </template>
 
-<script>
-export default {
-   methods:{
-       diario(){
-           this.$router.push('/voluntario/idAnimal')
-       }
-   }
-}
-</script>

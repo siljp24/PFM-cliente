@@ -1,5 +1,5 @@
 <template>
-    <div class="anadir-historia">
+    <div class="editar-historia">
         <v-form>
             <v-card>
                 <v-card-title class="justify-center"> HISTORIA</v-card-title>
@@ -37,39 +37,44 @@ export default {
     },
     methods:{
         async onSubmit(){
+        console.log("entramos")
             if(this.date.length === 0 || this.diarioAnimal.length === 0 || this.descripcion.length === 0){
                 alert("Todos los campos deben ser completados");
                 return;
             };
             try{
-                const idAnimal = localStorage.getItem('idAnimal');
+                const idDiario = localStorage.getItem('idDiario');
+                console.log({idDiario})
                 const token = localStorage.getItem('token');
+                console.log({token})
+                const idAnimal = localStorage.getItem('idAnimal');
                 const formData = new FormData();
                 formData.enctype = 'multipart/form-data';
                 formData.append('diarioAnimal', this.diarioAnimal);
                 formData.append('descripcion', this.descripcion);
                 formData.append('fecha', this.date);
                 formData.append('idAnimal', idAnimal);
-                const res = await fetch('http://localhost:4500/api/diario/crearDiario',{
-                    method:'post',
+                const res = await fetch(`http://localhost:4500/api/diario/editarDiario/${idDiario}`,{
+                    method:'put',
                     headers:{
                         token:token,
                     },
                     body: formData,
                 });
                 const data = await res.json();
+                console.log({ data })
                 if(data.error){
                     alert(data.error);
                     return;
                 }
                 this.$router.push(`/voluntario/idAnimal/${idAnimal}`);
+                localStorage.removeItem('idDiario');
                 localStorage.removeItem('idAnimal');
             }catch(err){
                 console.log(err);
             }
         }
     }
-
+    }
     
-}
 </script>

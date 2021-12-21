@@ -8,7 +8,7 @@
             </v-col>
             <v-col cols="6">
                 <v-flex text-right>
-                    <v-btn color="green lighten-2" to="/voluntario/anadirHistoria">Nueva historia</v-btn>
+                    <v-btn color="green lighten-2" v-on:click="toNewHistory">Nueva historia</v-btn>
                 </v-flex>
             </v-col>
         </v-row>
@@ -58,6 +58,10 @@ export default {
         },
         toEditAnimal(){
             this.$router.push(`/voluntario/idAnimal/editarAnimal/${this.idAnimal}`);
+        },
+        toNewHistory(){
+            localStorage.setItem("idAnimal", this.idAnimal);
+            this.$router.push("/voluntario/anadirHistoria");
         }
     }
 }

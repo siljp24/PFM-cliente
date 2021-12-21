@@ -22,7 +22,7 @@
 export default {
     data(){
         return{
-            animal:'',
+            animal:{},
             idAnimal:this.$route.params.id,
         }
     },

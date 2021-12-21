@@ -18,7 +18,7 @@ export default {
     layout:'historiaAnimal',
     data(){
         return{
-            diario:'',
+            diario:{},
             idAnimal:'',
         }
     },

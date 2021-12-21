@@ -22,7 +22,7 @@
                         </v-card>
                     </v-dialog>
                 <v-spacer></v-spacer>
-                <v-btn color="teal darken-4" text v-bind="attrs" v-on="on" @click="irAnadirHistoria">Editar</v-btn>
+                <v-btn color="teal darken-4" text @click="irAnadirHistoria(diario._id, diario.idAnimal)">Editar</v-btn>
             </v-card-actions>
         </v-card>
     </div>
@@ -45,7 +45,9 @@ export default {
         leerHistoria(idHistoria){
             this.$router.push(`/voluntario/idHistoria/${idHistoria}`);
         },
-        irAnadirHistoria(){
+        irAnadirHistoria(idDiario, idAnimal){
+            localStorage.setItem('idDiario', idDiario);
+            localStorage.setItem('idAnimal', idAnimal);
             this.$router.push("/voluntario/idHistoria/editar");
         }
     }
