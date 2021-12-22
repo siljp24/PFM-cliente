@@ -37,16 +37,13 @@ export default {
     },
     methods:{
         async onSubmit(){
-        console.log("entramos")
             if(this.date.length === 0 || this.diarioAnimal.length === 0 || this.descripcion.length === 0){
                 alert("Todos los campos deben ser completados");
                 return;
             };
             try{
                 const idDiario = localStorage.getItem('idDiario');
-                console.log({idDiario})
                 const token = localStorage.getItem('token');
-                console.log({token})
                 const idAnimal = localStorage.getItem('idAnimal');
                 const formData = new FormData();
                 formData.enctype = 'multipart/form-data';

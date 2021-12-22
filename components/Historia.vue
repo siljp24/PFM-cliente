@@ -3,7 +3,7 @@
         <v-card>
             <v-row>
                 <v-col cols="4">
-                    <v-img :src="diario.foto"></v-img>
+                    <v-img :src="diario.foto" max-height="200px" min-width="400px"></v-img>
                 </v-col>
                 <v-col cols="8">
                     <v-card-text>

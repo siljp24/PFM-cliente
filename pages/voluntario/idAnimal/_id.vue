@@ -14,7 +14,7 @@
         </v-row>
         <v-row>
             <div v-for="(diario,index) in diarios" :key="index">
-                <DiarioCard :diario="diario"/>
+                <DiarioCard :diario="diario" @onUpdateDiaries="handleUpdates"/>
             </div>
         </v-row>
        
@@ -62,6 +62,10 @@ export default {
         toNewHistory(){
             localStorage.setItem("idAnimal", this.idAnimal);
             this.$router.push("/voluntario/anadirHistoria");
+        },
+        async handleUpdates(){
+            this.diarios=[];
+            await this.loadDiaries();
         }
     }
 }

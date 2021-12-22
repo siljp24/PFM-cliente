@@ -17,7 +17,7 @@
                             <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn color="primary" text @click="dialog = false">NO</v-btn>
-                            <v-btn color="primary" text @click="dialog = false">SÍ</v-btn>
+                            <v-btn color="primary" text @click="dialog = false" v-on:click="eliminarDiario(diario._id, diario.idAnimal)">SÍ</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -49,6 +49,32 @@ export default {
             localStorage.setItem('idDiario', idDiario);
             localStorage.setItem('idAnimal', idAnimal);
             this.$router.push("/voluntario/idHistoria/editar");
+        },
+        async eliminarDiario(idDiario, idAnimal){
+            try{
+                const token = localStorage.getItem('token');
+                const body = JSON.stringify({
+                    idDiario,
+                    idAnimal,
+                });
+                const res = await fetch('http://localhost:4500/api/diario/eliminarDiario',{
+                    method: 'delete',
+                    headers:{
+                        'Content-Type': 'application/json',
+                        token,
+                    },
+                    body,
+                    
+                });
+                const data = await res.json();
+                if(data.error){
+                    alert(data.error);
+                    return;
+                };
+                this.$emit('onUpdateDiaries');
+            }catch(err){
+                console.log(err);
+            }
         }
     }
     

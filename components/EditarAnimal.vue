@@ -26,7 +26,7 @@
                             <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn color="primary" text @click="dialog = false">NO</v-btn>
-                            <v-btn color="primary" text @click="dialog = false">SÍ</v-btn>
+                            <v-btn color="primary" text @click="dialog = false" v-on:click="eliminarAnimal">SÍ</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -42,7 +42,7 @@
 export default {
     data(){
         return{
-            perfilAnimal: '',
+            perfilAnimal: undefined,
             nombre: '',
             edad: '',
             descripcion:'',
@@ -52,7 +52,6 @@ export default {
                 'end',
             ],
             dialog: false,
-            idAnimal:this.$route.params.id,
         }
     },
     methods:{
@@ -62,6 +61,7 @@ export default {
                 return;
             };
             try{
+                const idAnimal = this.$route.params.id
                 const formData = new FormData();
                 formData.enctype = 'multipart/form-data';
                 formData.append('perfilAnimal', this.perfilAnimal);
@@ -70,7 +70,7 @@ export default {
                 formData.append('descripcion', this.descripcion);
                 formData.append('edad', this.edad);
                 const token = localStorage.getItem('token');
-                const res = await fetch(`http://localhost:4500/api/animal/editarAnimal/${this.idAnimal}`,{
+                const res = await fetch(`http://localhost:4500/api/animal/editarAnimal/${idAnimal}`,{
                     method:'put',
                     headers:{
                         token:token,
@@ -83,6 +83,31 @@ export default {
                     return;
                 };
                 this.$router.push(`/voluntario/idAnimal/${this.idAnimal}`);
+            }catch(err){
+                console.log(err);
+            }
+        },
+        async eliminarAnimal(){
+            try{
+                const idAnimal = this.$route.params.id;
+                const token = localStorage.getItem('token');
+                const body = JSON.stringify({idAnimal});
+                console.log({ idAnimal, token })
+                const res = await fetch('http://localhost:4500/api/animal/eliminarAnimal',{
+                    method:'delete',
+                    headers:{
+                        'Content-Type': 'application/json',
+                        token,
+                    },
+                    body,
+                });
+                const data = await res.json();
+                console.log({ data })
+                if(data.error){
+                    alert(data.error);
+                    return;
+                };
+                this.$router.push('/voluntario/main');
             }catch(err){
                 console.log(err);
             }
