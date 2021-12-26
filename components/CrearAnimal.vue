@@ -20,7 +20,7 @@
 export default {
     data(){
         return{
-            perfilAnimal: '',
+            perfilAnimal: undefined,
             nombre:'',
             edad:'',
             descripcion:'',

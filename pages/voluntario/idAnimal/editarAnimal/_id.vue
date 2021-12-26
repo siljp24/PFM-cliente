@@ -16,5 +16,6 @@
 <script>
 export default {
     layout: 'crearEditarAnimal',
+    
 }
 </script>

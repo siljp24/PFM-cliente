@@ -1,17 +1,19 @@
 <template>
     <div class="voluntario-idAnimal">
-        <v-row>
-           <v-col cols="6">
-                <v-flex text-left>
-                    <v-btn color="orange lighten-2" v-on:click="toEditAnimal">EDITAR ANIMAL</v-btn>
-                </v-flex>
-            </v-col>
-            <v-col cols="6">
-                <v-flex text-right>
-                    <v-btn color="green lighten-2" v-on:click="toNewHistory">Nueva historia</v-btn>
-                </v-flex>
-            </v-col>
-        </v-row>
+        <div v-if="token">
+            <v-row>
+                <v-col cols="6">
+                    <v-flex text-left>
+                        <v-btn color="orange lighten-2" v-on:click="toEditAnimal">EDITAR ANIMAL</v-btn>
+                    </v-flex>
+                </v-col>
+                <v-col cols="6">
+                    <v-flex text-right>
+                        <v-btn color="green lighten-2" v-on:click="toNewHistory">Nueva historia</v-btn>
+                    </v-flex>
+                </v-col>
+            </v-row>
+        </div>
         <v-row>
             <div v-for="(diario,index) in diarios" :key="index">
                 <DiarioCard :diario="diario" @onUpdateDiaries="handleUpdates"/>
@@ -28,10 +30,12 @@ export default {
         return{
             diarios:[],
             idAnimal:this.$route.params.id,
+            token:'',
         }
     },
     async beforeMount(){
         await this.loadDiaries();
+        this.token = window.localStorage.getItem('token');
     },
     methods:{
         async loadDiaries(){

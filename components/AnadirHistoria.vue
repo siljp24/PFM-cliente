@@ -19,9 +19,9 @@
                     </v-menu>
                     <v-textarea v-model="descripcion" placeholder="Suceso" required></v-textarea>
                 </v-card-text>
-                <v-btn block v-on:click="onSubmit" elevation="2"> ENVIAR</v-btn>
             </v-card>
         </v-form> 
+        <v-btn block v-on:click="onSubmit" elevation="2" class="mt-6"> ENVIAR</v-btn>
     </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
     data(){
         return{
             date:(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-            diarioAnimal: '',
+            diarioAnimal: undefined,
             descripcion:'',
             menu: false,
         }

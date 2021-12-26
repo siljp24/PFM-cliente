@@ -3,7 +3,7 @@
         <v-card elevation="12" class="ma-5" min-width="344" max-width="344">
            <v-img class="white--text align-end" height="200px" :src="diario.foto" v-on:click="leerHistoria(diario._id)"></v-img> 
            <v-card-subtitle class="pb-0 text-center">{{ diario.fecha}}</v-card-subtitle>
-           <v-card-actions>
+           <v-card-actions v-if="token">
                 <v-dialog v-model="dialog" width="500">
                         <template v-slot:activator="{ on, attrs }">
                              <v-btn color="orange" text v-bind="attrs" v-on="on">Eliminar</v-btn>
@@ -39,7 +39,11 @@ export default {
     data(){
         return{
             dialog: false,
+            token:'',
         }
+    },
+    beforeMount(){
+        this.token = window.localStorage.getItem('token');
     },
     methods:{
         leerHistoria(idHistoria){
