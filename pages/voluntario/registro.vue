@@ -1,6 +1,13 @@
 <template>
     <div class="sesion-voluntario">
-        <SignUpVoluntario />
+        <v-row>
+            <v-col cols="5">
+                <FotoRegistro />
+            </v-col>
+            <v-col cols="7">
+                <SignUpVoluntario />
+            </v-col>
+        </v-row>
     </div>
 </template>
 

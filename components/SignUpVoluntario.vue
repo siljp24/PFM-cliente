@@ -1,6 +1,6 @@
 <template>
     <div class="sign-up-voluntario">
-         <v-form ref="form" v-model="valid" lazy-validation>
+         <v-form ref="form" v-model="valid" lazy-validation class="mb-6">
                 <v-card>
                     <v-card-title class="subtitulo justify-center">Registrarme</v-card-title>
                     <v-card-text>
@@ -13,6 +13,7 @@
                     </v-card-text>
                 </v-card>    
         </v-form>  
+        <a href="/voluntario/sesion">Iniciar Sesión</a>
     </div>
 </template>
 

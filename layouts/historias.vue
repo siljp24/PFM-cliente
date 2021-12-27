@@ -9,10 +9,7 @@
                             <FotoAnimal />
                         </v-col>
                     </v-row>
-                    <v-row>
                         <Nuxt />
-                    </v-row>
-                    
                 </v-container>
             </v-main>
         </v-app>

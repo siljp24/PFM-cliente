@@ -1,11 +1,23 @@
 <template>
     <div class="sesion-voluntario">
-        <SignInVoluntario />
+        <v-row>
+            <v-col cols="5">
+                <FotoSesion />
+            </v-col>
+            <v-col cols="7">
+                <SignInVoluntario />
+            </v-col>
+        </v-row>
     </div>
 </template>
 
 <script>
 export default {
     layout:'sesionesVoluntarios',
+    data(){
+        return{
+            src:'assets/voluntaria.png',
+        }
+    }
 }
 </script>

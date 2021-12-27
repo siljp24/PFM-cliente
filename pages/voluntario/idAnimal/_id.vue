@@ -1,25 +1,16 @@
 <template>
     <div class="voluntario-idAnimal">
-        <div v-if="token">
-            <v-row>
-                <v-col cols="6">
-                    <v-flex text-left>
-                        <v-btn color="orange lighten-2" v-on:click="toEditAnimal">EDITAR ANIMAL</v-btn>
-                    </v-flex>
-                </v-col>
-                <v-col cols="6">
-                    <v-flex text-right>
-                        <v-btn color="green lighten-2" v-on:click="toNewHistory">Nueva historia</v-btn>
-                    </v-flex>
-                </v-col>
-            </v-row>
-        </div>
+        <v-row  v-if="token">
+            <v-col class="text-start">
+                <v-btn color="orange lighten-2" v-on:click="toEditAnimal" class="mr-6">EDITAR ANIMAL</v-btn>
+                <v-btn color="green lighten-2" v-on:click="toNewHistory">Nueva historia</v-btn>
+            </v-col>
+        </v-row>
         <v-row>
             <div v-for="(diario,index) in diarios" :key="index">
                 <DiarioCard :diario="diario" @onUpdateDiaries="handleUpdates"/>
             </div>
-        </v-row>
-       
+        </v-row>  
     </div>
 </template>
 
