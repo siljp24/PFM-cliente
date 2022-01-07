@@ -1,11 +1,11 @@
 <template>
-    <div class="sesion-voluntario">
+    <div class="perfil-voluntario">
         <v-row>
             <v-col cols="5">
-                <FotoSesion />
+                <FotoPerfil />
             </v-col>
             <v-col cols="7">
-                <SignInVoluntario />
+                <UpdateVoluntario />
             </v-col>
         </v-row>
     </div>
@@ -13,6 +13,6 @@
 
 <script>
 export default {
-    layout:'sesionesVoluntarios',
+    layout: 'perfil',
 }
 </script>
