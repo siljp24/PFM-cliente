@@ -36,6 +36,13 @@ export default {
                 this.onSubmit();
            }
         },
+        validateEmail(email) {
+            return String(email)
+                .toLowerCase()
+                .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                );
+        },
         async onSubmit(){ 
              if(this.password !== this.password2 ){
                 alert("Las contraseñas son diferentes");
@@ -49,8 +56,9 @@ export default {
                 alert("nombre demasiado corto");
                 return;
             };
-            if(!this.email.includes("@")){
-                alert("introduzca un email");
+            if(this.validateEmail(this.email) === null){
+                alert("Email incorrecto");
+                return;
             };
             try{
                 const body = JSON.stringify({
