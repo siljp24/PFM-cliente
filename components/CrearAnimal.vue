@@ -33,6 +33,10 @@ export default {
                 alert("Es necesario rellenar todos los campos");
                 return;
             };
+            if(this.perfilAnimal.size >= 1000000){
+                alert("Imagen demasiado grande");
+                return;
+            }
             try{
                 const formData = new FormData();
                 formData.enctype = 'multipart/form-data';

@@ -41,6 +41,10 @@ export default {
                 alert("Todos los campos deben ser completados");
                 return;
             };
+            if(this.diarioAnimal.size >= 1000000){
+                alert("Imagen demasiado grande");
+                return;
+            }
             try{
                 const idAnimal = localStorage.getItem('idAnimal');
                 const token = localStorage.getItem('token');

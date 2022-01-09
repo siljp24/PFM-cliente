@@ -7,7 +7,7 @@
                         <v-btn plain to="/voluntario/main"><v-toolbar-title> LA RESERVA</v-toolbar-title></v-btn>
                     </v-col>
                     <v-col cols="4" class="text-right">
-                        <v-btn color="green accent-4" dark fab plain><v-icon large>mdi-account</v-icon></v-btn>
+                        <v-btn color="green accent-4" dark fab plain v-on:click="toProfile"><v-icon large>mdi-account</v-icon></v-btn>
                         <v-btn class=" brown lighten-1 ms-2" v-on:click="logout" plain>Cerrar Sesión</v-btn>
                     </v-col>
                 </v-row>
@@ -35,6 +35,9 @@
         logout(){
             this.$router.push('/');
             window.localStorage.clear();
+        },
+        toProfile(){
+            this.$router.push('/voluntario/perfil');
         }
     }
   }

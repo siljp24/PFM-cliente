@@ -5,10 +5,10 @@
                 <v-card-title class="justify-center">EDITAR ANIMAL</v-card-title>
                 <v-card-text>
                     <v-file-input v-model="perfilAnimal" placeholder="Foto" required></v-file-input>
-                    <v-text-field v-model="nombre" placeholder="Nombre" required></v-text-field>
-                    <v-text-field v-model="edad" placeholder="Edad" required></v-text-field>
-                    <v-textarea v-model="descripcion" placeholder="Descripcion" required></v-textarea>
-                    <v-text-field v-model="especie" placeholder="Especie" required></v-text-field>
+                    <v-text-field v-model="animal.nombre" placeholder="Nombre" required></v-text-field>
+                    <v-text-field v-model="animal.edad" placeholder="Edad" required></v-text-field>
+                    <v-textarea v-model="animal.descripcion" placeholder="Descripcion" required></v-textarea>
+                    <v-text-field v-model="animal.especie" placeholder="Especie" required></v-text-field>
                 </v-card-text>
             </v-card>
             <v-row class="mt-8">
@@ -40,13 +40,15 @@
 </template>
 <script>
 export default {
+    props:{
+        animal:{
+            type: Object,
+            required:true,
+        },
+    },
     data(){
         return{
             perfilAnimal: undefined,
-            nombre: '',
-            edad: '',
-            descripcion:'',
-            especie:'',
             justify:[
                 'start',
                 'end',
@@ -56,7 +58,7 @@ export default {
     },
     methods:{
         async edit(){
-            if(this.nombre.length === 0 ||this.edad.length === 0 || this.descripcion.length === 0 || this.especie.length === 0 || this.perfilAnimal.length === 0){
+            if(this.$props.animal.nombre.length === 0 ||this.$props.animal.edad.length === 0 || this.$props.animal.descripcion.length === 0 || this.$props.animal.especie.length === 0 || (this.perfilAnimal !== undefined && this.perfilAnimal.length >= 1000000)){
                 alert("Es necesario rellenar todos los campos");
                 return;
             };
@@ -64,11 +66,13 @@ export default {
                 const idAnimal = this.$route.params.id
                 const formData = new FormData();
                 formData.enctype = 'multipart/form-data';
-                formData.append('perfilAnimal', this.perfilAnimal);
-                formData.append('nombre', this.nombre);
-                formData.append('especie', this.especie);
-                formData.append('descripcion', this.descripcion);
-                formData.append('edad', this.edad);
+                if(this.perfilAnimal !== undefined){
+                    formData.append('perfilAnimal', this.perfilAnimal);
+                }
+                formData.append('nombre', this.$props.animal.nombre);
+                formData.append('especie', this.$props.animal.especie);
+                formData.append('descripcion', this.$props.animal.descripcion);
+                formData.append('edad', this.$props.animal.edad);
                 const token = localStorage.getItem('token');
                 const res = await fetch(`http://localhost:4500/api/animal/editarAnimal/${idAnimal}`,{
                     method:'put',
@@ -82,7 +86,7 @@ export default {
                     alert(data.error);
                     return;
                 };
-                this.$router.push(`/voluntario/idAnimal/${this.idAnimal}`);
+                this.$router.push(`/voluntario/idAnimal/${idAnimal}`);
             }catch(err){
                 console.log(err);
             }

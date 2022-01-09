@@ -7,7 +7,7 @@
         </v-row>
          <v-row>
             <v-col md="6" offset-md="3">
-                <EditarAnimal />
+                <EditarAnimal :animal="animal"/>
             </v-col>
         </v-row>
     </div>
@@ -16,6 +16,28 @@
 <script>
 export default {
     layout: 'crearEditarAnimal',
+   data(){
+        return{
+           animal:{},
+        }
+    },
+    async beforeMount(){
+        await this.getAnimal();
+    },
+    methods:{
+        async getAnimal(){
+            const idAnimal = this.$route.params.id;
+            const res = await fetch(`http://localhost:4500/api/animal/${idAnimal}`);
+            const data = await res.json();
+            if(data.error){
+                alert(data.error);
+                return;
+            }
+            this.animal = data.animal;
+        }
+    }
     
 }
 </script>
+
+
