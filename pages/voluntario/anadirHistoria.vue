@@ -19,6 +19,7 @@ export default {
         goBack(){
            const idAnimal = window.localStorage.getItem('idAnimal');
            this.$router.push(`/voluntario/idAnimal/${idAnimal}`);
+           window.localStorage.removeItem('idAnimal');
         },
     }
 }
