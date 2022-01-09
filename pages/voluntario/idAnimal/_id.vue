@@ -11,6 +11,7 @@
                 <DiarioCard :diario="diario" @onUpdateDiaries="handleUpdates"/>
             </div>
         </v-row>  
+        <Footer />
     </div>
 </template>
 

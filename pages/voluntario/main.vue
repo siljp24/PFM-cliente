@@ -12,6 +12,7 @@
             <AnimalCard :animal="animal"/>
         </div>
         </v-row>
+          <Footer />
     </div>
 </template>
 
