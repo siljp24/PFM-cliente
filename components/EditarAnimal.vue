@@ -58,10 +58,14 @@ export default {
     },
     methods:{
         async edit(){
-            if(this.$props.animal.nombre.length === 0 ||this.$props.animal.edad.length === 0 || this.$props.animal.descripcion.length === 0 || this.$props.animal.especie.length === 0 || (this.perfilAnimal !== undefined && this.perfilAnimal.length >= 1000000)){
+            if(this.$props.animal.nombre.length === 0 ||this.$props.animal.edad.length === 0 || this.$props.animal.descripcion.length === 0 || this.$props.animal.especie.length === 0){
                 alert("Es necesario rellenar todos los campos");
                 return;
             };
+            if(this.perfilAnimal !== undefined && this.perfilAnimal.length >= 1000000){
+                alert("Foto demasiado grande");
+                return;
+            }
             try{
                 const idAnimal = this.$route.params.id
                 const formData = new FormData();

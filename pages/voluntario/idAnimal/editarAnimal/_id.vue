@@ -2,7 +2,7 @@
     <div class="voluntario-editar-animal">
         <v-row>
             <v-col cols="2">
-                <v-btn to="/voluntario/idAnimal" block color="deep-orange lighten-3">VOLVER</v-btn>
+                <v-btn v-on:click="toBack" block color="deep-orange lighten-3">VOLVER</v-btn>
             </v-col>
         </v-row>
          <v-row>
@@ -34,6 +34,9 @@ export default {
                 return;
             }
             this.animal = data.animal;
+        },
+        toBack(){
+            this.$router.push(`/voluntario/idAnimal/${this.$route.params.id}`)
         }
     }
     
