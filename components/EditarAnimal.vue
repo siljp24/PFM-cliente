@@ -92,7 +92,6 @@ export default {
                 const idAnimal = this.$route.params.id;
                 const token = localStorage.getItem('token');
                 const body = JSON.stringify({idAnimal});
-                console.log({ idAnimal, token })
                 const res = await fetch('http://localhost:4500/api/animal/eliminarAnimal',{
                     method:'delete',
                     headers:{
@@ -102,7 +101,6 @@ export default {
                     body,
                 });
                 const data = await res.json();
-                console.log({ data })
                 if(data.error){
                     alert(data.error);
                     return;

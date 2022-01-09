@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-perfil">
+    <div class="layout-perfil" v-if="token">
         <v-app>
             <v-row>
                 <v-col cols="12">
@@ -17,3 +17,20 @@
         </v-app>
     </div>
 </template>
+<script>
+export default {
+    data(){
+        return{
+            token:''
+        }
+    },
+    beforeMount(){
+        this.token = localStorage.getItem('token');
+        if(this.token === null || this.token === ''){
+            this.$router.push('/')
+        }
+    }
+}
+</script>
+
+
