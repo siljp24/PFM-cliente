@@ -12,7 +12,21 @@
                         <v-btn block @click="validate">Enviar</v-btn>
                     </v-card-text>
                 </v-card>    
-        </v-form>  
+        </v-form>
+        <v-dialog v-model="dialog" width="500">
+            <template v-slot:activator="{ on, attrs }">
+                <p>¿Deseas darte de baja como voluntario? <a v-bind="attrs" v-on="on">Darme de baja</a></p>
+            </template>
+            <v-card>
+                <v-card-title class="text-h5">Baja como voluntario</v-card-title>
+                <v-card-text>¿Estás seguro de darte de baja como voluntario de la reserva? Tus datos se eliminarán para siempre</v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="green darken-1" text @click="dialog = false">NO</v-btn>
+                    <v-btn color="green darken-1" text @click="dialog = false">SÍ</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
     </div>
 </template>
 
@@ -28,6 +42,7 @@ export default {
         return{
             password:'',
             password2:'',
+            dialog: false,
         }
     },
     methods:{

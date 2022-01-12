@@ -2,7 +2,7 @@
     <div class="footer" >
         <v-row>
             <v-col col="12">
-                <v-footer color="brown" padless absolute>
+                <v-footer color="brown" padless >
                     <v-card flat tile class="brown white--text text-center mx-auto">
                         <v-card-text>
                             <v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>
@@ -21,6 +21,21 @@
         </v-row>
     </div>
 </template>
+
+<script>
+  export default {
+    data: () => ({
+      icons: [
+        'mdi-facebook',
+        'mdi-twitter',
+        'mdi-linkedin',
+        'mdi-instagram',
+      ],
+    }),
+  }
+</script> 
+
+
 <style scoped>
     .pie{
         font-size: 130%;
