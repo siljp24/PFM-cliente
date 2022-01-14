@@ -23,7 +23,7 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="green darken-1" text @click="dialog = false">NO</v-btn>
-                    <v-btn color="green darken-1" text @click="dialog = false">SÍ</v-btn>
+                    <v-btn color="green darken-1" text @click="dialog = false" v-on:click="eliminarVoluntario">SÍ</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -89,6 +89,27 @@ export default {
                 console.log(err);
             }
 
+        },
+        async eliminarVoluntario(){
+            try{
+                const token = window.localStorage.getItem('token');
+                const res = await fetch('http://localhost:4500/api/voluntario/eliminarVoluntario',{
+                    method:'delete',
+                    headers:{
+                        token,
+                    }
+                });
+                const data = await res.json();
+                if(data.error){
+                    alert(data.error);
+                    return;
+                }
+                window.localStorage.clear();
+                this.$router.push('/');
+            }catch(err){
+                console.log({ error: err });
+            }
+            
         }
     }
 }

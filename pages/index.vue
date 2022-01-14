@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index" v-if="!token">
     <v-row>
       <div v-for="(animal,index) in animales" :key="index">
         <AnimalCard :animal="animal"/>
@@ -14,10 +14,15 @@ export default {
   data(){
     return{
       animales:[],
+      token:undefined,
     }
   },
   async beforeMount(){
     await this.loadAnimals();
+  },
+  mounted(){
+    const token = window.localStorage.getItem('token');
+    this.$router.push('/voluntario/main');
   },
   methods:{
     async loadAnimals(){

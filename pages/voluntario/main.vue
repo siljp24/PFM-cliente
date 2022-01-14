@@ -1,7 +1,7 @@
 <template>
     <div class="voluntarios-main">
         <v-row>
-            <v-col cols="12">
+            <v-col cols="12" v-if="token">
                 <v-flex text-right>
                     <v-btn color="green lighten-2" v-on:click="toCreateAniaml">NUEVO ANIMAL</v-btn>
                 </v-flex>
@@ -20,12 +20,17 @@
 export default {
     layout:'mainVoluntarios',
      data(){
-    return{
-      animales:[],
-    }
+        return{
+          animales:[],
+          token:undefined,
+        }
   },
   async beforeMount(){
     await this.loadAnimals();
+  },
+  mounted(){
+    const token = window.localStorage.getItem('token');
+    this.token = token;
   },
   methods:{
     async loadAnimals(){

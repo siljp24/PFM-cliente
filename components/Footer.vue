@@ -1,5 +1,5 @@
 <template>
-    <div class="footer" >
+    <div class="footer mt-8" >
         <v-row>
             <v-col col="12">
                 <v-footer color="brown" padless >

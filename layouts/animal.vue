@@ -12,6 +12,7 @@
                     <v-row>
                         <Nuxt />
                     </v-row>
+                    <Footer />
                 </v-container>
             </v-main>
         </v-app>
