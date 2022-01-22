@@ -6,7 +6,7 @@
                 <v-card-text>
                     <v-file-input v-model="perfilAnimal" placeholder="Foto" required></v-file-input>
                     <v-text-field v-model="animal.nombre" placeholder="Nombre" required></v-text-field>
-                    <v-text-field v-model="animal.edad" placeholder="Edad" required></v-text-field>
+                    <v-text-field v-model="animal.edad" type="number" placeholder="Edad" required></v-text-field>
                     <v-textarea v-model="animal.descripcion" placeholder="Descripcion" required></v-textarea>
                     <v-text-field v-model="animal.especie" placeholder="Especie" required></v-text-field>
                 </v-card-text>

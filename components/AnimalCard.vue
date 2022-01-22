@@ -5,7 +5,7 @@
         <v-card-title>{{ animal.nombre }}</v-card-title>
         <v-card-subtitle>{{ animal.especie }}, {{ animal.edad }}</v-card-subtitle>
         <v-card-actions>
-          <v-btn color="orange lighten-2" text>Conóceme</v-btn>
+          <v-btn color="orange lighten-2" disabled text>Conóceme</v-btn>
           <v-spacer></v-spacer>
           <v-btn icon @click="show = !show">
             <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
