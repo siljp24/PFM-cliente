@@ -6,7 +6,7 @@
                     <v-card-text>
                         <v-text-field v-model="perfil.nombre" required type="text"></v-text-field>
                         <v-text-field v-model="perfil.direccion" required type="text" prepend-inner-icon="mdi-map-marker"></v-text-field>
-                        <v-text-field v-model="perfil.telefono" required type="number"></v-text-field>
+                        <v-text-field v-model="perfil.telefono" placeholder="Teléfono" required type="number"></v-text-field>
                         <v-text-field v-model="password" required placeholder="Contraseña (más de 5 caracteres)" type="password"></v-text-field>
                         <v-text-field v-model="password2" required placeholder="Repetir contraseña" type="password"></v-text-field>
                         <v-btn block @click="validate">Enviar</v-btn>
