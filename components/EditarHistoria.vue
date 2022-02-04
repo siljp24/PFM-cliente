@@ -59,7 +59,7 @@ export default {
                 formData.append('descripcion', this.$props.diario.descripcion);
                 formData.append('fecha', this.$props.diario.fecha);
                 formData.append('idAnimal', idAnimal);
-                const res = await fetch(`http://localhost:4500/api/diario/editarDiario/${idDiario}`,{
+                const res = await fetch(`https://reservanimal.herokuapp.com/api/diario/editarDiario/${idDiario}`,{
                     method:'put',
                     headers:{
                         token:token,

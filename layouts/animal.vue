@@ -33,7 +33,7 @@ export default {
     methods:{
         async cargarFoto(){
             try{
-                const res = await fetch(`http://localhost:4500/api/animal/${this.idAnimal}`,{
+                const res = await fetch(`https://reservanimal.herokuapp.com/api/animal/${this.idAnimal}`,{
                     method:'get',
                 });
                 const data = await res.json();

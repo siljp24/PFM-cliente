@@ -31,7 +31,7 @@ export default {
                     email: this.email,
                     clave: this.password,
                 });
-                const res = await fetch('http://localhost:4500/api/voluntario/identificarVoluntario',{
+                const res = await fetch('https://reservanimal.herokuapp.com/api/voluntario/identificarVoluntario',{
                     method:'post',
                     headers:{
                         'Content-Type': 'application/json',

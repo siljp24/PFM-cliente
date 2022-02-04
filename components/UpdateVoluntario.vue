@@ -71,7 +71,7 @@ export default {
                     telefono: this.$props.perfil.telefono,
                     clave: this.password,
                 });
-                const res = await fetch('http://localhost:4500/api/voluntario/actualizarVoluntario',{
+                const res = await fetch('https://reservanimal.herokuapp.com/api/voluntario/actualizarVoluntario',{
                     method: 'put',
                     headers:{
                         'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ export default {
         async eliminarVoluntario(){
             try{
                 const token = window.localStorage.getItem('token');
-                const res = await fetch('http://localhost:4500/api/voluntario/eliminarVoluntario',{
+                const res = await fetch('https://reservanimal.herokuapp.com/api/voluntario/eliminarVoluntario',{
                     method:'delete',
                     headers:{
                         token,

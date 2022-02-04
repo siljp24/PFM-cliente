@@ -27,7 +27,7 @@ export default {
   methods:{
     async loadAnimals(){
       try{
-        const res = await fetch('http://localhost:4500/api/animal/listaAnimales',
+        const res = await fetch('https://reservanimal.herokuapp.com/api/animal/listaAnimales',
         {
             headers: {
               'Content-Type': 'application/json',

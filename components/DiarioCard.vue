@@ -61,7 +61,7 @@ export default {
                     idDiario,
                     idAnimal,
                 });
-                const res = await fetch('http://localhost:4500/api/diario/eliminarDiario',{
+                const res = await fetch('https://reservanimal.herokuapp.com/api/diario/eliminarDiario',{
                     method: 'delete',
                     headers:{
                         'Content-Type': 'application/json',

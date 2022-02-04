@@ -29,7 +29,7 @@ export default {
         async loadHistory(){
              try{
                 const idDiario = this.$route.params.id;
-                const res = await fetch(`http://localhost:4500/api/diario/${idDiario}`,
+                const res = await fetch(`https://reservanimal.herokuapp.com/api/diario/${idDiario}`,
                 {
                     headers: {
                     'Content-Type': 'application/json',

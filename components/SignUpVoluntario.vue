@@ -85,7 +85,7 @@ export default {
                     nombre: this.nombre,
                     clave: this.password,
                 });
-                const res = await fetch('http://localhost:4500/api/voluntario/crearVoluntario',{
+                const res = await fetch('https://reservanimal.herokuapp.com/api/voluntario/crearVoluntario',{
                     method: 'post',
                     headers:{
                         'Content-Type': 'application/json',

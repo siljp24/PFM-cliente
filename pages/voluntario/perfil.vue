@@ -30,7 +30,7 @@ export default {
         async cargarPerfil(){
             try{
                 const token = window.localStorage.getItem('token');
-                const res = await fetch('http://localhost:4500/api/voluntario/obtenerVoluntario',{
+                const res = await fetch('https://reservanimal.herokuapp.com/api/voluntario/obtenerVoluntario',{
                     headers:{
                         token,
                     },

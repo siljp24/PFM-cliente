@@ -33,7 +33,7 @@ export default {
         async getHistory(){
             try{
                 const idDiario = localStorage.getItem('idDiario');
-                const res = await fetch(`http://localhost:4500/api/diario/${idDiario}`,
+                const res = await fetch(`https://reservanimal.herokuapp.com/api/diario/${idDiario}`,
                 {
                     headers: {
                     'Content-Type': 'application/json',

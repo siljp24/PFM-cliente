@@ -78,7 +78,7 @@ export default {
                 formData.append('descripcion', this.$props.animal.descripcion);
                 formData.append('edad', this.$props.animal.edad);
                 const token = localStorage.getItem('token');
-                const res = await fetch(`http://localhost:4500/api/animal/editarAnimal/${idAnimal}`,{
+                const res = await fetch(`https://reservanimal.herokuapp.com/api/animal/editarAnimal/${idAnimal}`,{
                     method:'put',
                     headers:{
                         token:token,
@@ -100,7 +100,7 @@ export default {
                 const idAnimal = this.$route.params.id;
                 const token = localStorage.getItem('token');
                 const body = JSON.stringify({idAnimal});
-                const res = await fetch('http://localhost:4500/api/animal/eliminarAnimal',{
+                const res = await fetch('https://reservanimal.herokuapp.com/api/animal/eliminarAnimal',{
                     method:'delete',
                     headers:{
                         'Content-Type': 'application/json',

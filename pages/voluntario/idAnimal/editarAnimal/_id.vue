@@ -27,7 +27,7 @@ export default {
     methods:{
         async getAnimal(){
             const idAnimal = this.$route.params.id;
-            const res = await fetch(`http://localhost:4500/api/animal/${idAnimal}`);
+            const res = await fetch(`https://reservanimal.herokuapp.com/api/animal/${idAnimal}`);
             const data = await res.json();
             if(data.error){
                 alert(data.error);

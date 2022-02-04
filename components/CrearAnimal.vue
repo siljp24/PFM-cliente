@@ -46,7 +46,7 @@ export default {
                 formData.append('descripcion', this.descripcion);
                 formData.append('edad', this.edad);
                 const token = localStorage.getItem('token');
-                const res = await fetch('http://localhost:4500/api/animal/crearAnimal',{
+                const res = await fetch('https://reservanimal.herokuapp.com/api/animal/crearAnimal',{
                     method:'post',
                     headers:{
                         token:token,
