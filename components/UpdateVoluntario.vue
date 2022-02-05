@@ -59,7 +59,7 @@ export default {
                 alert("nombre demasiado corto");
                 return;
             };
-             if(this.$props.perfil.telefono.length < 999999999 && this.$props.perfil.telefono.length >= 11111111){
+             if(this.$props.perfil.telefono.length !== 9){
                 alert("telefono incorrecto");
                 return;
             };
